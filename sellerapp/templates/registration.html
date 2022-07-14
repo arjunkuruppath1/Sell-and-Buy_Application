@@ -1,0 +1,79 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+}
+</style>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+<div class="container register-form" style="margin-top:100px;">
+            <div class="form">
+                <div class="note">
+                    <p>This is a Selling Application! Please Register your details</p>
+                </div>
+
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="User Name *" name="username" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name *" name="firstname" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Phone Number *" name="phone" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Emailid *" name="email" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password1" class="form-control" placeholder="Your Password *" name="password" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password2" placeholder="Confirm Password *" name="cpassword" />
+                            </div>
+                        </div>
+                    </div>
+                    Profile Image <input type="file" class="profileimage" name="profile" required/>
+                    <center><button type="submit" class="btnSubmit">Submit</button></center><br>
+                    <p>Already have account &nbsp;<a href="{% url 'log' %}">login here</a> </p><br>
+                    <div>
+                        {% for messages in messages %}
+                        <p style="color:red;">{{messages}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
